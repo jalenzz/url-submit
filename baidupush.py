@@ -13,7 +13,7 @@ headers = {
 }
 html = urllib.request.urlopen(sitemap).read().decode('utf-8')
 result = re.findall(re.compile(r'(?<=<loc>).*?(?=</loc>)'), html)
-url = 'http://data.zz.baidu.com/urls?site={site}&token=BAIDU_TOKEN'
+url = 'http://data.zz.baidu.com/urls?site=' + site + '&token=BAIDU_TOKEN'
 
 for data in result:
   print(data + '\n' +
