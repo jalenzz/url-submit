@@ -22,10 +22,11 @@ jobs:
     - name: Install requests
       run: pip install requests
 
-    - name: BAIDU env
-      env:
-        BAIDU_TOKEN: ${{ secrets.BAIDUTOKEN }}
-      run: sed -i "s/BAIDU_TOKEN/${BAIDU_TOKEN}/" baidupush.py
+    - name: generate
+      run: python generate.py
 
     - name: Push
-      run: python baidupush.py
+      env:
+        BAIDU_TOKEN: ${{ secrets.BAIDUTOKEN }}
+        SITE: ${{ secrets.SITE }}
+      run: curl -H 'Content-Type:text/plain' --data-binary @urls.txt "http://data.zz.baidu.com/urls?site=${SITE}&token=${BAIDU_TOKEN}"

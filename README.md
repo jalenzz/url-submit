@@ -12,12 +12,11 @@
 
 先前往百度资源搜索平台获取 `token`，就是 API 提交中，接口调用地址 `http://data.zz.baidu.com/urls?site=xxx&token=xxx`，`token=` 之后的那一串。
 
-`fork` 本仓库，`Settings > Secrets > new New secret`，`Name` 中填写 `baiduToken`，`Value` 即刚刚获取的。（放入 Secrets 中能防止 token 泄露）
+`fork` 本仓库，`Settings > Secrets > new New secret`，`Name` 中填写 `BAIDUTOKEN`，`Value` 即刚刚获取的。（放入 Secrets 中能防止 token 泄露）。再新建一个 secret，`name` 为 `site`，`Value` 为你的博客地址，需要协议头，结尾不能有 `/`
 
-将 `baidupush.py` 文件中 `site` 变量的值修改为你的博客地址，需要协议头，结尾不能有 `/`，`sitemap` 变量的值修改为你的 sitemap.xml 地址，请确保你的 sitemap 为正常格式。
+将 `generate.py` 文件中 `sitemap` 变量的值修改为你的 sitemap.xml 地址，请确保你的 sitemap 为正常格式。
 
 ```py
-site = 'https://blog.jalenchuh.cn'
 sitemap = 'https://blog.jalenchuh.cn/sitemap.xml'
 ```
 
