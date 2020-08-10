@@ -1,0 +1,31 @@
+name: push
+
+on:
+  schedule:
+    - cron: '0 16 * * *'
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Set up python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+
+    - name: Install requests
+      run: pip install requests
+
+    - name: BAIDU env
+      env:
+        BAIDU_TOKEN: ${{ secrets.BAIDUTOKEN }}
+      run: sed -i "s/BAIDU_TOKEN/${BAIDU_TOKEN}/" baidupush.py
+
+    - name: Push
+      run: python baidupush.py
