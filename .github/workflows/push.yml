@@ -1,6 +1,7 @@
 name: push
 
 on:
+  push:
   schedule:
     - cron: '0 16 * * *'
   watch:
