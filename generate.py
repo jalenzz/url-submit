@@ -1,7 +1,6 @@
 import re
 import json
 import urllib
-import ssl
 import requests
 
 site = 'https://yunzd.life'
